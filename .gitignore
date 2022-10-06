@@ -42,3 +42,4 @@ set_env.sh
 !.elasticbeanstalk/*.cfg.yml
 !.elasticbeanstalk/*.global.yml
 set_env.sh
+docs.txt

@@ -43,3 +43,4 @@ set_env.sh
 !.elasticbeanstalk/*.global.yml
 set_env.sh
 docs.txt
+cluster-trust-policy.json

@@ -3,13 +3,10 @@ kind: ConfigMap
 metadata:
   name: env-configmap
 data:
-  POSTGRES_HOS: udagram-db.ctixe16kkn8w.us-east-1.rds.amazonaws.com
+  POSTGRES_HOST: udagram-db.ctixe16kkn8w.us-east-1.rds.amazonaws.com
   POSTGRES_DB: postgres
   AWS_BUCKET: arn:aws:s3:::my-udagram-bucket
   AWS_REGION: us-east-1
   AWS_PROFILE: default2
   JWT_SECRET: testing
   URL: http://localhost:8100
-
-
-

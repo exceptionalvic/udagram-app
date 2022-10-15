@@ -1,4 +1,4 @@
-apiVersion: extensions/v1beta1
+apiVersion: apps/v1
 kind: Deployment
 metadata:
   labels:
@@ -6,57 +6,60 @@ metadata:
   name: backend-feed
 spec:
   replicas: 3
+  selector:
+    matchLabels:
+      app: backend-feed
   template:
     metadata:
       labels:
-        service: backend-feed
+        app: backend-feed
     spec:
       containers:
-        - image: 11223030/udagram-api-feed
+        - image: 11223030/udagram-api-feed:v4
           name: backend-feed
           imagePullPolicy: Always
-          resources:
-            requests:
-              memory: '64Mi'
-              cpu: '250m'
-            limits:
-              memory: '1024Mi'
-              cpu: '500m'
+          # resources:
+          #   requests:
+          #     memory: '100Mi'
+          #     # cpu: '250m'
+          #   limits:
+          #     memory: '1024Mi'
+          #     # cpu: '500m'
           env:
             - name: URL
               valueFrom:
                 configMapKeyRef:
-                  name: env-config
+                  name: env-configmap
                   key: URL
             - name: AWS_BUCKET
               valueFrom:
                 configMapKeyRef:
-                  name: env-config
+                  name: env-configmap
                   key: AWS_BUCKET
             - name: AWS_PROFILE
               valueFrom:
                 configMapKeyRef:
-                  name: env-config
+                  name: env-configmap
                   key: AWS_PROFILE
             - name: AWS_REGION
               valueFrom:
                 configMapKeyRef:
-                  name: env-config
+                  name: env-configmap
                   key: AWS_REGION
             - name: JWT_SECRET
               valueFrom:
                 configMapKeyRef:
-                  name: env-config
+                  name: env-configmap
                   key: JWT_SECRET
             - name: POSTGRES_DB
               valueFrom:
                 configMapKeyRef:
-                  name: env-config
+                  name: env-configmap
                   key: POSTGRES_DB
             - name: POSTGRES_HOST
               valueFrom:
                 configMapKeyRef:
-                  name: env-config
+                  name: env-configmap
                   key: POSTGRES_HOST
             - name: POSTGRES_PASSWORD
               valueFrom:

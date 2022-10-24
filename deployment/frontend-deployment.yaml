@@ -13,10 +13,9 @@ spec:
     metadata:
       labels:
         app: frontend
-        api: external
     spec:
       containers:
-        - image: 11223030/udagram-frontend:v5
+        - image: 11223030/udagram-frontend:v6
           name: frontend
           imagePullPolicy: Always
           ports:
